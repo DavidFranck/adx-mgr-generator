@@ -1,0 +1,11 @@
+package ${package}.${moduleName}.service;
+
+import org.springframework.stereotype.Service;
+import ${mainPath}.common.beans.BaseService;
+import ${package}.${moduleName}.${pathName}.dao.${className}Dao;
+import ${package}.${moduleName}.${pathName}.entity.${className}Entity;
+
+@Service
+public class ${className}Service extends BaseService<${className}Dao, ${className}Entity>{
+
+}

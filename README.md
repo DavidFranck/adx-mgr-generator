@@ -1,0 +1,2 @@
+**adx-mgr-generator**
+
