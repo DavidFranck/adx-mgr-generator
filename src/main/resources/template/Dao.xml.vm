@@ -29,8 +29,12 @@
 		from ${tableName} a
         <include refid="${classname}Join"/>
         <where>
-            <if test="condition !=null and condition.trim()!=''">
-                and ${condition}
+            <!--查询条件-->
+            <if test="condition!=null and condition.rules!=null and condition.rules.size >0">
+                AND
+                <foreach collection="condition.rules" item="rule" open="(" separator="AND" close=")">
+					${rule.field} ${rule.op} #{rule.data}
+                </foreach>
             </if>
         </where>
         <choose>
@@ -50,8 +54,12 @@
 		select count(*) from ${tableName} a
         <include refid="${classname}Join"/>
         <where>
-            <if test="condition !=null and condition.trim()!=''">
-                and ${condition}
+            <!--查询条件-->
+            <if test="condition!=null and condition.rules!=null and condition.rules.size >0">
+                AND
+                <foreach collection="condition.rules" item="rule" open="(" separator="AND" close=")">
+					${rule.field} ${rule.op} #{rule.data}
+                </foreach>
             </if>
         </where>
 	</select>
