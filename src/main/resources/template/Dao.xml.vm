@@ -12,7 +12,8 @@
 
 	<sql id="${classname}Columns">
 #foreach($column in $columns)
-		a.${column.columnName} AS ${column.attrname} ,
+		a.${column.columnName} AS ${column.attrname} #if($velocityCount != $columns.size()) ,
+#end
 #end
 	</sql>
     <sql id="${classname}Join">
