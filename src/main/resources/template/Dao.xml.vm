@@ -32,9 +32,18 @@
             <!--查询条件-->
             <if test="condition!=null and condition.rules!=null and condition.rules.size >0">
                 AND
-                <foreach collection="condition.rules" item="rule" open="(" separator="AND" close=")">
+                <foreach collection="condition.rules" item="rule" open="(" close=")" index="i">
+                    <if test="i!=0">
+						${condition.groupOp}
+                    </if>
 					${rule.field} ${rule.op} #{rule.data}
                 </foreach>
+            </if>
+            <if test="beginTime!=null and beginTime.trim()!=''">
+                <![CDATA[   and DATE_FORMAT(date, '%Y-%m-%d') >=  DATE_FORMAT(#{beginTime}, '%Y-%m-%d')   ]]>
+            </if>
+            <if test="endTime!=null and endTime.trim()!=''">
+                <![CDATA[  and DATE_FORMAT(date, '%Y-%m-%d') <= DATE_FORMAT(#{endTime}, '%Y-%m-%d')    ]]>
             </if>
         </where>
         <choose>
@@ -60,6 +69,12 @@
                 <foreach collection="condition.rules" item="rule" open="(" separator="AND" close=")">
 					${rule.field} ${rule.op} #{rule.data}
                 </foreach>
+            </if>
+            <if test="beginTime!=null and beginTime.trim()!=''">
+                <![CDATA[   and DATE_FORMAT(date, '%Y-%m-%d') >=  DATE_FORMAT(#{beginTime}, '%Y-%m-%d')   ]]>
+            </if>
+            <if test="endTime!=null and endTime.trim()!=''">
+                <![CDATA[  and DATE_FORMAT(date, '%Y-%m-%d') <= DATE_FORMAT(#{endTime}, '%Y-%m-%d')    ]]>
             </if>
         </where>
 	</select>
