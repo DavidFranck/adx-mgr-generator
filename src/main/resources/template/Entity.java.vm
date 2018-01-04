@@ -22,12 +22,15 @@ public class ${className}Entity extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 #foreach ($column in $columns)
+	#if('id' != $column.attrname)
 	//$column.comments
     @ApiModelProperty(value = "$column.comments" )
 	private $column.attrType $column.attrname;
+	#end
 #end
 
 #foreach ($column in $columns)
+	#if('id' != $column.attrname)
 	/**
 	 * 设置：${column.comments}
 	 */
@@ -40,5 +43,16 @@ public class ${className}Entity extends BaseEntity implements Serializable {
 	public $column.attrType get${column.attrName}() {
 		return $column.attrname;
 	}
+	#end
 #end
+
+    @Override
+    public void preInsert() {
+
+    }
+
+    @Override
+    public void preUpdate() {
+
+    }
 }
