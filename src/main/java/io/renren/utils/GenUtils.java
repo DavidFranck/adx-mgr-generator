@@ -87,7 +87,8 @@ public class GenUtils {
 
             columsList.add(columnEntity);
         }
-        tableEntity.setColumns(columsList.stream().filter(columnEntity -> !Arrays.asList("create_by", "create_date","update_by","update_date").contains(columnEntity.getColumnName())).collect(Collectors.toList()));
+//        tableEntity.setColumns(columsList.stream().filter(columnEntity -> !Arrays.asList("create_by", "create_date", "update_by", "update_date").contains(columnEntity.getColumnName())).collect(Collectors.toList()));
+        tableEntity.setColumns(columsList);
 
         //没主键，则第一个字段为主键
         if (tableEntity.getPk() == null) {
@@ -150,7 +151,7 @@ public class GenUtils {
      * 表名转换成Java类名
      */
     public static String tableToJava(String tableName, String tablePrefix) {
-        if (StringUtils.isNotBlank(tablePrefix)) {
+        if (StringUtils.isNotBlank(tablePrefix) && tableName.startsWith(tablePrefix)) {
             tableName = tableName.replaceFirst(tablePrefix, "");
         }
         return columnToJava(tableName);

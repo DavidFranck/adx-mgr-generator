@@ -39,12 +39,6 @@
 					${rule.field} ${rule.op} #{rule.data}
                 </foreach>
             </if>
-            <if test="beginTime!=null and beginTime.trim()!=''">
-                <![CDATA[   and DATE_FORMAT(date, '%Y-%m-%d') >=  DATE_FORMAT(#{beginTime}, '%Y-%m-%d')   ]]>
-            </if>
-            <if test="endTime!=null and endTime.trim()!=''">
-                <![CDATA[  and DATE_FORMAT(date, '%Y-%m-%d') <= DATE_FORMAT(#{endTime}, '%Y-%m-%d')    ]]>
-            </if>
         </where>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -69,12 +63,6 @@
                 <foreach collection="condition.rules" item="rule" open="(" separator="AND" close=")">
 					${rule.field} ${rule.op} #{rule.data}
                 </foreach>
-            </if>
-            <if test="beginTime!=null and beginTime.trim()!=''">
-                <![CDATA[   and DATE_FORMAT(date, '%Y-%m-%d') >=  DATE_FORMAT(#{beginTime}, '%Y-%m-%d')   ]]>
-            </if>
-            <if test="endTime!=null and endTime.trim()!=''">
-                <![CDATA[  and DATE_FORMAT(date, '%Y-%m-%d') <= DATE_FORMAT(#{endTime}, '%Y-%m-%d')    ]]>
             </if>
         </where>
 	</select>

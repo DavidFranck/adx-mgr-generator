@@ -22,7 +22,14 @@ public class ${className}Entity extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 #foreach ($column in $columns)
-	#if('id' != $column.attrname)
+	#if('id' != $column.attrname
+	&& "remarks"!=$column.attrname
+	&& "createBy"!=$column.attrname
+	&& "createDate"!=$column.attrname
+	&& "updateBy"!=$column.attrname
+	&& "updateDate"!=$column.attrname
+	&& "delFlag"!=$column.attrname
+	)
 	//$column.comments
     @ApiModelProperty(value = "$column.comments" )
 	private $column.attrType $column.attrname;
@@ -30,7 +37,14 @@ public class ${className}Entity extends BaseEntity implements Serializable {
 #end
 
 #foreach ($column in $columns)
-	#if('id' != $column.attrname)
+	#if('id' != $column.attrname
+	&& "remarks"!=$column.attrname
+	&& "createBy"!=$column.attrname
+	&& "createDate"!=$column.attrname
+	&& "updateBy"!=$column.attrname
+	&& "updateDate"!=$column.attrname
+	&& "delFlag"!=$column.attrname
+	)
 	/**
 	 * 设置：${column.comments}
 	 */
@@ -46,13 +60,4 @@ public class ${className}Entity extends BaseEntity implements Serializable {
 	#end
 #end
 
-    @Override
-    public void preInsert() {
-
-    }
-
-    @Override
-    public void preUpdate() {
-
-    }
 }
