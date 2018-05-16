@@ -7,18 +7,18 @@ server:
 
 # mysql
 spring:
-#    datasource:
-#        type: com.alibaba.druid.pool.DruidDataSource
-#        driverClassName: com.mysql.jdbc.Driver
-#        url: jdbc:mysql://localhost:3306/crm_test?useUnicode=true&characterEncoding=UTF-8
-#        username: root
-#        password: root
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
         url: jdbc:mysql://101.200.32.177:3306/dsp_crm?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
         username: crm
         password: Mex@2018#
+#    datasource:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#        driverClassName: com.mysql.jdbc.Driver
+#        url: jdbc:mysql://101.200.32.177:3306/demo_dsp?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+#        username: crm
+#        password: Mex@2018#
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss

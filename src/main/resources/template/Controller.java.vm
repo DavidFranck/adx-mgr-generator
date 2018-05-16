@@ -38,7 +38,7 @@ public class ${className}Controller extends AbstractController{
 	 * 列表
 	 */
 	@GetMapping("/list")
-	@RequiresPermissions("${moduleName}:${pathName}:view")
+	@RequiresPermissions("${moduleName}:${pathName}:list")
     @ApiOperation(value = "列表" )
 	public ResponseBean list(@RequestParam Map<String, Object> params){
 		//查询列表数据
@@ -52,7 +52,7 @@ public class ${className}Controller extends AbstractController{
 	 * 信息
 	 */
 	@GetMapping("/info/{${pk.attrname}}")
-	@RequiresPermissions("${moduleName}:${pathName}:view")
+	@RequiresPermissions("${moduleName}:${pathName}:info")
     @ApiOperation(value = "信息" )
 	public ResponseBean info(@PathVariable("${pk.attrname}") Long ${pk.attrname}){
 		${className}Entity ${classname} = ${classname}Service.queryObject(${pk.attrname});
@@ -63,7 +63,7 @@ public class ${className}Controller extends AbstractController{
 	 * 保存
 	 */
 	@PostMapping("/save")
-	@RequiresPermissions("${moduleName}:${pathName}:edit")
+	@RequiresPermissions("${moduleName}:${pathName}:save")
     @ApiOperation(value = "保存" )
 	public ResponseBean save(@RequestBody ${className}Entity ${classname}){
 		${classname}Service.save(${classname});
@@ -74,7 +74,7 @@ public class ${className}Controller extends AbstractController{
 	 * 修改
 	 */
 	@PutMapping("/update")
-	@RequiresPermissions("${moduleName}:${pathName}:edit")
+	@RequiresPermissions("${moduleName}:${pathName}:update")
     @ApiOperation(value = "修改" )
 	public ResponseBean update(@RequestBody ${className}Entity ${classname}){
 		${classname}Service.update(${classname});
@@ -85,7 +85,7 @@ public class ${className}Controller extends AbstractController{
 	 * 删除
 	 */
 	@DeleteMapping("/delete/{ids}")
-	@RequiresPermissions("${moduleName}:${pathName}:edit")
+	@RequiresPermissions("${moduleName}:${pathName}:delete")
     @ApiOperation(value = "删除" )
 	public ResponseBean delete(@PathVariable("ids") Long[] ${pk.attrname}s){
 		${classname}Service.deleteBatch(${pk.attrname}s);
