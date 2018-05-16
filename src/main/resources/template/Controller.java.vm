@@ -54,7 +54,7 @@ public class ${className}Controller extends AbstractController{
 	@GetMapping("/info/{${pk.attrname}}")
 	@RequiresPermissions("${moduleName}:${pathName}:info")
     @ApiOperation(value = "信息" )
-	public ResponseBean info(@PathVariable("${pk.attrname}") Long ${pk.attrname}){
+	public ResponseBean info(@PathVariable("${pk.attrname}") Integer ${pk.attrname}){
 		${className}Entity ${classname} = ${classname}Service.queryObject(${pk.attrname});
 		return ResponseBean.ok().putData(${classname});
 	}
@@ -87,7 +87,7 @@ public class ${className}Controller extends AbstractController{
 	@DeleteMapping("/delete/{ids}")
 	@RequiresPermissions("${moduleName}:${pathName}:delete")
     @ApiOperation(value = "删除" )
-	public ResponseBean delete(@PathVariable("ids") Long[] ${pk.attrname}s){
+	public ResponseBean delete(@PathVariable("ids") Integer[] ${pk.attrname}s){
 		${classname}Service.deleteBatch(${pk.attrname}s);
 		return ResponseBean.ok();
 	}
